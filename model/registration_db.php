@@ -29,7 +29,6 @@ function get_product_code($product_name){
 
 
 
-
 ?>
 
 

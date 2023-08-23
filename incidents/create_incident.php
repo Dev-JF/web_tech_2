@@ -2,8 +2,8 @@
 
 <main>
     <?php 
-	$customer_email = 'harold@propane.com';
-	//$email = filter_input(INPUT_POST, 'email');
+	
+	$customer_email = filter_input(INPUT_POST, 'email');
 	
 	// get customer info
 	$customers_by_email = get_customer_by_email($customer_email);
@@ -13,30 +13,44 @@
 	
 	//get customers products
 	$products = get_products_by_customer($customer_email);
+	$product_code = $products['productCode'];
 	
 	
+	$phptime = time();	
+	$date_opened = date('Y-m-d H:i:s', $phptime); 
 	?>
 	
 	
+    <form>
     
-    
-	<p>Customer: <?php echo $customer_first_name; ?> <?php echo $customer_last_name; ?></p> 
+		<p>Customer: <?php echo $customer_first_name; ?> <?php echo $customer_last_name; ?></p> 
 		
-	<label for="products">Products:</label>
+		<label for="products">Products:</label>
         <select name="products" id="products">
-       <?php foreach ($products as $product): ?>
-            <option value="<?= htmlspecialchars($product['name']) ?>"><?= htmlspecialchars($product['name']) ?></option>
-        <?php endforeach; ?>
+        <?php foreach ($products as $product): ?>
+        <option value="<?= htmlspecialchars($product['name']) ?>">
+		<?= htmlspecialchars($product['name']) ?></option>
+        </select><br><br>
         	
 		
 		<label for="title">Title:</label>
-        <br><input type="text" id="title" name="title"><br>
+        <input type="text" id="title" name="title"><br><br>
 		
-		<input type="hidden" name="action" value="customer_incident">
+		<label for="description">Description:</label>
+        <textarea type="textarea" id="description" name="description" rows="4" cols="50">
+		</textarea><br><br>
+		
+		<input type="hidden" id="customer_id" name="customerID" 
+		value="<?php echo htmlspecialchars($customer_id); ?>" required>
+		
+		<input type="hidden" id="product_code" name="productCode" 
+		value="<?php echo htmlspecialchars($customer_id); ?>" required> 
+		
+		<input type="hidden" name="action" value="incident_complete">
                 
         <input type="submit" value="Create Incident">
     </form>
-    
+    <?php endforeach; ?>
 
 </main>
 <?php include '../view/footer.php'; ?>

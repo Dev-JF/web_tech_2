@@ -6,7 +6,7 @@
 
 
 
-function add_incident(){
+function add_incident($customer_id, $product_code, $date_opened, $title, $description){
 	
 global $db;
     $query = 'INSERT INTO incidents
