@@ -39,6 +39,18 @@ function get_product($product_code) {
     return $product;
 }
 
+function get_product_code($product_name) {
+    global $db;
+    $query = 'SELECT * FROM products
+              WHERE name = :product_name';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':product_name', $product_name);
+    $statement->execute();
+    $product = $statement->fetch();
+    $statement->closeCursor();
+    return $product;
+}
+
 function delete_product($product_code) {
     global $db;
     $query = 'DELETE FROM products

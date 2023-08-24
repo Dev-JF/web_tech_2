@@ -2,6 +2,9 @@
 <main>
 
 	
+	
+	
+	
 	<h1>Create Incident</h1>
     <p>This incident was added to the database.</P>
     

@@ -28,13 +28,20 @@ if ($action == 'customer_incident') {
 }
 
   else if ($action == 'incident_complete') {
-	$customer_id = filter_input(INPUT_POST, 'customerID');
-	$product_code = filter_input(INPUT_POST, 'productCode');
-	$date_opened = filter_input(INPUT_POST, 'dtaeOpened');
-	$title = filter_input(INPUT_POST, 'title');
-	$description = filter_input(INPUT_POST, 'description');
 	
-	add_incident($customer_id, $product_code, $date_opened, $title, $description);
+	
+		$customer_id = filter_input(INPUT_POST, 'customerID');
+		$product_name = filter_input(INPUT_POST, 'products');
+		$date_opened = filter_input(INPUT_POST, 'dateOpened');
+		$title = filter_input(INPUT_POST, 'title');
+		$description = filter_input(INPUT_POST, 'description');
+		
+		
+		$product = get_product_code($product_name);
+		$product_code = $product['productCode'];
+		
+		
+		add_incident($customer_id, $product_code, $date_opened, $title, $description);
 	
 	include('incident_created.php');
 }

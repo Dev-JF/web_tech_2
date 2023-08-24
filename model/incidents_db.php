@@ -1,6 +1,6 @@
 <?php
 
-//get product only from the customer who registered it
+
 
 
 
