@@ -9,37 +9,71 @@ if ($action === NULL) {
         $action = 'list_products';
     }
 }
-
+  // Display the product list
 if ($action == 'list_products') {
-    // Get product data
+   
     $products = get_products();
-    // Display the product list
+  
     include('product_list.php');
-} else if ($action == 'delete_product') {
-    $product_code = filter_input(INPUT_POST, 'product_code');
-    //Delete product
+	
+} 
+//Delete product if button pressed
+else if ($action == 'delete_product') {
+    
+	$product_code = filter_input(INPUT_POST, 'product_code');
+    
+	
     delete_product($product_code);
-    header("Location: .");
+    
+	header("Location: .");
+// shows the add product form
 } else if ($action == 'show_add_form') {
-    echo 'aids';
+   
 	include('product_add.php');
+
 } else if ($action == 'add_product') {
-    $code = filter_input(INPUT_POST, 'code');
+    
+	$code = filter_input(INPUT_POST, 'code');
     $name = filter_input(INPUT_POST, 'name');
     $version = filter_input(INPUT_POST, 'version', FILTER_VALIDATE_FLOAT);
     $release_date = filter_input(INPUT_POST, 'release_date');
 	
-    // Validate the inputs
+	$product_exist = code_check($code);
 	
+	
+    // Validate the inputs
 
-    if ( $code === NULL || $name === FALSE || 
-            $version === NULL || $version === FALSE || 
-            $release_date === NULL) {
-        $error = "Invalid product data. Check all fields and try again.";
+   if ($code == NULL) {
+        $error = "Code is required.";
         include('../errors/error.php');
-    } else {
+    }
+	else if($product_exist['COUNT(productCode)'] == 1) {
+		$error = "A product with that code already exists.";
+        include('../errors/error.php');
+		
+	}
+	else if ($name == NULL){
+		$error = "Name is required.";
+        include('../errors/error.php');
+		
+	}
+	else if (is_float($version) == FALSE) {
+		$error = "Version must be a valid number.";
+        include('../errors/error.php');
+	}
+	else if ($version <= 0){
+		$error = "Version must be greater than 0.";
+        include('../errors/error.php');
+		
+	}
+	
+	else if($release_date == NULL) {
+		$error = "Release Date required.";
+        include('../errors/error.php');
+	}
+	else if ($code != NULL && $name != NULL && $version >= 0 && is_float($version) && $release_date != NULL) {
         add_product($code, $name, $version, $release_date);
         header("Location: .");
-    }
+    } 
 }
 ?>

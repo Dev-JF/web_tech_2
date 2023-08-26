@@ -1,6 +1,12 @@
 <?php include '../view/header.php'; ?>
+
+<style>
+	<?php include '../main.css';?>
+</style>
+
 <main>
-    <h1>Add Product</h1>
+    <!-- displays text boxs for data entry -->
+	<h1>Add Product</h1>
     <form action="." method="post" id="aligned">
         <input type="hidden" name="action" value="add_product">
 

@@ -21,15 +21,46 @@ if ($action == 'list_technicians') {
     delete_technician($technician_code);
     header("Location: .");
 } else if ($action == 'show_add_form') {
-    // ???
+   
 	include('technician_add.php');
-} else if ($action == 'add_technician') {
-    $firstName = filter_input(INPUT_POST, 'firstName');
-    $lastName = filter_input(INPUT_POST, 'lastName');
+} else if($action == 'technician_add'){
+	
+	$first_name = filter_input(INPUT_POST, 'first_name');
+    $last_name = filter_input(INPUT_POST, 'last_name');
     $email = filter_input(INPUT_POST, 'email');
     $phone = filter_input(INPUT_POST, 'phone');
 	$password = filter_input(INPUT_POST, 'password');
 	
-	add_technician($firstName, $lastName, $email, $phone, $password);
+	// validates user input
+	if($first_name == NULL){
+		$error = "First Name is required.";
+        include('../errors/error.php');
+		
+	}
+	else if($last_name == NULL) {
+		$error = "Last Name is required.";
+        include('../errors/error.php');
+		
+	}
+	else if(filter_var($email, FILTER_VALIDATE_EMAIL) == FALSE) {
+		$error = "Email is not valid.";
+        include('../errors/error.php');
+		
+	}
+	else if($phone == NULL) {
+		$error = "Phone is required.";
+        include('../errors/error.php');
+		
+	}
+	else if($password == NULL) {
+		$error = "Password is required.";
+        include('../errors/error.php');
+		
+	}
+	else {
+	
+	add_technician($first_name, $last_name, $email, $phone, $password);
+	$technicians = get_technicians();
+	include('technician_list.php'); }
 }
 ?>

@@ -1,4 +1,8 @@
 <?php include '../view/header.php'; ?>
+<style>
+<?php include '../main.css';?>
+</style>
+
 
 <main>
     <?php 
@@ -19,37 +23,36 @@
 	
 	
 	
-	$phptime = time();	
-	$date_opened = date('Y-m-d H:i:s', $phptime); 
+	
 	?>
 	
-	
+	<!-- takes user input and post it -->
     <form action="." method="post" id="aligned">
-    
+		<h1>Create Incident</h1>
+		
 		<p>Customer: <?php echo $customer_first_name; ?> <?php echo $customer_last_name; ?></p> 
 		
 		<label for="products">Products:</label>
-        <select name="products" id="products">
-        <?php foreach ($products as $product): ?>
-        <option value="<?= htmlspecialchars($product['name']) ?>">
-		<?= htmlspecialchars($product['name']) ?></option>
-        <?php endforeach; ?>
-		</select><br><br>
+			<select name="products" id="products">
+			<?php foreach ($products as $product): ?>
+			<option value="<?= htmlspecialchars($product['name']) ?>">
+			<?= htmlspecialchars($product['name']) ?></option>
+			<?php endforeach; ?>
+			</select><br><br>
       	
 		
 		
 		<label for="title">Title:</label>
-        <input type="text" id="title" name="title"><br><br>
+			<input type="text" id="title" name="title"><br><br>
 		
 		<label for="description">Description:</label>
-        <textarea type="textarea" id="description" name="description" rows="4" cols="50">
-		</textarea><br><br>
+			<textarea type="textarea" id="description" name="description" rows="4" cols="50" placeholder="">
+			</textarea><br><br>
 		
-		<input type="hidden" id="customer_id" name="customerID" 
-		value="<?php echo htmlspecialchars($customer_id); ?>" required>
+			<input type="hidden" id="customer_id" name="customerID" 
+			value="<?php echo htmlspecialchars($customer_id); ?>" required>
 		
-		<input type="hidden" id="date_opened" name="dateOpened" 
-		value="<?php echo htmlspecialchars($date_opened); ?>" required>
+		
 		
 		 
 		<input type="hidden" name="action" value="incident_complete">

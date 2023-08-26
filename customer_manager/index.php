@@ -23,12 +23,16 @@ if ($action == 'search_customers') {
 	
 
 	
-	include('../customer_manager/cust.php');
+	include('../customer_manager/customer_table.php');
 	
 } else if ($action == 'customer_display') {
-    $last_name = filter_input(INPUT_POST, 'last_name');
+    
+	
+	$customer_id = filter_input(INPUT_POST, 'customer_id');
+	
 	
 	include('../customer_manager/customer_display.php');
+	
 } else if ($action == 'update_customer') {
     
         $customer_id = filter_input(INPUT_POST, 'customerID');
@@ -48,6 +52,6 @@ if ($action == 'search_customers') {
         $address, $city, $state, $postal_code, $country_code,
         $phone, $email, $password, $customer_id);
 	
-	echo $first_name;
+	include('../customer_manager/customer_updated.php');
 }
 ?>

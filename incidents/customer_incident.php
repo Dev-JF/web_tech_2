@@ -1,4 +1,10 @@
 <?php include '../view/header.php'; ?>
+
+<style>
+	<?php include '../main.css';?>
+</style>
+
+
 <main>
     
     

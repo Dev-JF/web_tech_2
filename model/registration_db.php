@@ -14,20 +14,18 @@ function add_registration($customer_id, $product_code, $date_time) {
 }
 
 
-function get_product_code($product_name){
-	global $db;
-    $query = 'SELECT * FROM products
-              WHERE name = :product_name';
+function email_check($email) {
+    global $db;
+    $query = 'SELECT COUNT(email) FROM customers
+			 WHERE email = :email';
     $statement = $db->prepare($query);
-    $statement->bindValue(':product_name', $product_name);
+    $statement->bindValue(':email', $email);
     $statement->execute();
-    $product = $statement->fetch();
+    $email_count = $statement->fetch();
     $statement->closeCursor();
-    return $product;
-    
+    return $email_count;
+   
 }
-
-
 
 ?>
 

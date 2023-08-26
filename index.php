@@ -1,4 +1,8 @@
 <?php include 'view/header.php'; ?>
+<style>
+	<?php include '../main.css';?>
+</style>
+
 <main>
     <nav>    
     <h2>Administrators</h2>

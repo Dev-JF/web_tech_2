@@ -92,4 +92,18 @@ function update_product($code, $name, $version, $release_date) {
     $statement->closeCursor();
 }
 
+function code_check($product_code) {
+    global $db;
+    $query = 'SELECT COUNT(productCode) FROM products
+			 WHERE productCode = :product_code';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':product_code', $product_code);
+    $statement->execute();
+    $product = $statement->fetch();
+    $statement->closeCursor();
+    return $product;
+   
+}
+
+
 ?>

@@ -1,10 +1,14 @@
 <?php include '../view/header.php'; ?>
 
+<style>
+	<?php include '../main.css';?>
+</style>
+
 <main>
 
-    <h2>Customer Login</h2>
+    <h1>Register Product:</h1>
     
-	<?php echo $customers_email; ?>
+	<?php echo "Product (" . $product_code . ") was registered successful" ?>
 
 </main>
 <?php include '../view/footer.php'; ?>

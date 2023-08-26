@@ -1,7 +1,12 @@
 <?php include '../view/header.php'; ?>
+<style>
+	<?php include '../main.css';?>
+</style>
+
+
 <main>
     <h1>Product List</h1>
-    <!-- display a table of products -->
+    <!-- display a table of product -->
     <table>
         <tr>
             <th>Code</th>

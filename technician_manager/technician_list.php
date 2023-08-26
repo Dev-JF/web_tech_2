@@ -1,4 +1,9 @@
 <?php include '../view/header.php'; ?>
+
+<style>
+	<?php include '../main.css';?>
+</style>
+
 <main>
 
     <h1>Technician List</h1>

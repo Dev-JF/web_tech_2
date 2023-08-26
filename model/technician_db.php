@@ -24,10 +24,10 @@ function add_technician($first_name, $last_name, $email, $phone, $password) {
     $query = 'INSERT INTO technicians
                  (firstName, lastName, email, phone, password)
               VALUES
-                 (:firstName, :lastName, :email, :phone, :password)';
+                 (:first_name, :last_name, :email, :phone, :password)';
     $statement = $db->prepare($query);
-    $statement->bindValue(':firstName', $firstName);
-    $statement->bindValue(':lastName', $lastName);
+    $statement->bindValue(':first_name', $first_name);
+    $statement->bindValue(':last_name', $last_name);
     $statement->bindValue(':email', $email);
     $statement->bindValue(':phone', $phone);
 	$statement->bindValue(':password', $password);
