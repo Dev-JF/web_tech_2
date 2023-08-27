@@ -1,4 +1,10 @@
 <?php include '../view/header.php'; ?>
+
+<style>
+	<?php include '../main.css';?>
+</style>
+
+
 <main>
     <h1>Database Error</h1>
     <p>There was an error connecting to the database.</p>

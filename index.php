@@ -22,7 +22,7 @@
 
     <h2>Customers</h2>
     <ul>
-        <li><a href="product_manager/index.php">Register Product</a></li>
+        <li><a href="product_register/index.php">Register Product</a></li>
     </ul>
     </nav>
 </main>

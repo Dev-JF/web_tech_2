@@ -28,8 +28,12 @@ if ($action == 'customer_incident') {
 		
 		$error = "A customer with that email address does not exist.";
         include('../errors/error.php');
+	} else if ($email == NULL){
+		
+		$error = "Please enter an email.";
+        include('../errors/error.php');
 	}
-	
+		
 	else if ($email_exist['COUNT(email)'] === 1){
 	
 	

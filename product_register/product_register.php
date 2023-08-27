@@ -35,7 +35,7 @@
             <option value="<?= htmlspecialchars($product['name']) ?>"><?= htmlspecialchars($product['name']) ?></option>
         <?php endforeach; ?>
         
-		</select>
+		</select><br>
      
 		
 		<input type="hidden" id="customer_id" name="customerID" 

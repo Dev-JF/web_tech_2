@@ -114,7 +114,7 @@
 	?>
   
 	
-	<p><a href="?action=update_customers">Search Customers</a></p>
+	<p><a href="?action=search_customers">Search Customers</a></p>
 	<?php
 	endif; 
 	
