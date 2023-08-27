@@ -12,7 +12,7 @@
 			<input type="text" id="last_name" name="last_name" 
 			value="" required>
 			
-			<input type="hidden" name="action" value="cust">
+			<input type="hidden" name="action" value="customer_table">
 			
 			<input type="submit" value="Search">
     </form>

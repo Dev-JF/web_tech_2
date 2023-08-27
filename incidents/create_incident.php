@@ -46,8 +46,7 @@
 			<input type="text" id="title" name="title"><br><br>
 		
 		<label for="description">Description:</label>
-			<textarea type="textarea" id="description" name="description" rows="4" cols="50" placeholder="">
-			</textarea><br><br>
+			<textarea type="textarea" id="description" name="description" rows="4" cols="50" placeholder=""></textarea><br><br>
 		
 			<input type="hidden" id="customer_id" name="customerID" 
 			value="<?php echo htmlspecialchars($customer_id); ?>" required>

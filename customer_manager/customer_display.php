@@ -25,8 +25,12 @@
 		$phone = $update_customers['phone'];
 		$email = $update_customers['email'];
 		$password = $update_customers['password']; 
-		
-		
+	
+	$countrys = get_country();
+	
+	$country_by_code = get_country_by_code($country_code);
+	
+	$customers_country = $country_by_code['countryName'];
 	?>
 	
 	 <?php if (isset($message)) : ?>
@@ -68,20 +72,23 @@
 
 			<label for="postalCode">Postal Code:</label>
 				<input type="text" id="postal_code" name="postalCode" 
-				value="<?php echo htmlspecialchars($postal_code); ?>" required><br><br>
+				value="<?php echo htmlspecialchars($postal_code); ?>" required>
 		
 		
-				<input type="hidden" id="country_code" name="countryCode" 
+			<input type="hidden" id="country_code" name="countryCode" 
 				value="<?php echo htmlspecialchars($country_code); ?>" required><br><br>
 		
 			<label for="country">Country:</label>
 				<select name="country" id="country" name="country">
 			
 			<?php foreach ($countrys as $country): ?>
-            <option value="<?= htmlspecialchars($country['countryName']) ?>"><?= htmlspecialchars($country['countryName']) ?></option>
+            <option value="<?= htmlspecialchars($country['countryName']) ?>" 
+			<?php echo ($country['countryName'] == $customers_country) ? 'selected' : ''; ?>>
+            <?= htmlspecialchars($country['countryName']) ?>
+        </option>
 			<?php endforeach; ?>
         
-				</select>
+				</select><br><br>
      
 		
 			<label for="phone">Phone:</label>
@@ -96,7 +103,7 @@
 				<input type="text" id="password" name="password" 
 				value="<?php echo htmlspecialchars($password); ?>" required><br><br>
 		
-		
+			
 				<input type="hidden" name="action" value="update_customer">
                 
 				<input type="submit" value="Update Customer">

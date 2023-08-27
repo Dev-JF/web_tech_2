@@ -1,4 +1,5 @@
 <?php include '../view/header.php'; ?>
+
 <style>
 <?php include '../main.css';?>
 </style>
@@ -15,10 +16,12 @@
 		
 	?>
 
-    <?php if (isset($message)) : ?>
-       
-		<p><?php echo $message; ?></p>
    
+
+
+
+
+	
         
 		<h2>Results</h2>
         <table>
@@ -49,10 +52,9 @@
 					</form>
                 </td>
             </tr>
-			
+			<?php endforeach; ?>
 			
         </table>
-		<?php endforeach; ?>
-    <?php endif; ?>
+	
 </main>
 <?php include '../view/footer.php'; ?>
